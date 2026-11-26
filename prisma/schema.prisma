@@ -1,0 +1,37 @@
+
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {  // este es el motor de la base de datos, en este caso postgres
+  provider = "postgresql"
+}
+
+model Artista { // Prisma genera la tabla artista en mi base de datos y genera las instrucciones SQL para crearla
+  id        Int      @id @default(autoincrement()) 
+  nombre    String
+  pais      String?
+  genero    String?
+  albums    Album[]  //array de discos por si el artista tiene varios discos
+  createdAt DateTime @default(now())
+}
+
+model Album {
+  id          Int      @id @default(autoincrement())
+  titulo      String
+  anio        Int
+  descripcion String?
+  artistaId   Int
+  artista     Artista  @relation(fields: [artistaId], references: [id]) //relation define la relación usando una FK
+  createdAt   DateTime @default(now())
+}
+
+
+model Usuario {
+  id        Int      @id @default(autoincrement())
+  nombre    String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}

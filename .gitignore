@@ -1,0 +1,23 @@
+# Dependencias
+node_modules/
+
+# Variables de entorno y credenciales
+.env
+.env.*
+!.env.example
+
+# Archivos generados por Prisma
+/generated/prisma/
+
+# Historial local
+.history/
+.lh/
+
+# Herramientas de desarrollo
+.agents/
+.claude/
+.windsurf/
+skills-lock.json
+
+# Logs
+*.log
